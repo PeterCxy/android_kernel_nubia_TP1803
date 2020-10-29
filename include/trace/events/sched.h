@@ -155,8 +155,6 @@ DEFINE_EVENT(sched_wakeup_template, sched_wakeup_new,
 #ifdef CREATE_TRACE_POINTS
 static inline long __trace_sched_switch_state(bool preempt, struct task_struct *p)
 {
-	unsigned int state;
-
 #ifdef CONFIG_SCHED_DEBUG
 	BUG_ON(p != current);
 #endif /* CONFIG_SCHED_DEBUG */
@@ -168,15 +166,7 @@ static inline long __trace_sched_switch_state(bool preempt, struct task_struct *
 	if (preempt)
 		return TASK_REPORT_MAX;
 
-	/*
-	 * __get_task_state() uses fls(), which considers LSB as 0. So
-	 * Decrement it by 1 (except TASK_RUNNING state i.e 0) before using
-	 * it for left shift operation to get the correct task->state
-	 * mapping.
-	 */
-	state = __get_task_state(p);
-
-	return state ? (1 << (state - 1)) : state;
+	return 1 << __get_task_state(p);
 }
 #endif /* CREATE_TRACE_POINTS */
 
