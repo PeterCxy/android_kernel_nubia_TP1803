@@ -18,7 +18,7 @@
 # include "gsi_reg.h"
 # include "gsi_emulation_stubs.h"
 
-# define gsi_emu_readl(c)     ({ u32 __v = readl_relaxed(c); __iormb(); __v; })
+# define gsi_emu_readl(c)     (readl(c))
 # define gsi_emu_writel(v, c) ({ __iowmb(); writel_relaxed((v), (c)); })
 
 # define CNTRLR_BASE 0
