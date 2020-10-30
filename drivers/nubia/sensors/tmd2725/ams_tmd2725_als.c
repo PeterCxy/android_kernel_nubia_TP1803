@@ -40,7 +40,7 @@ static int tmd2725_read_als(struct tmd2725_chip *chip);
 static void tmd2725_report_als(struct tmd2725_chip *chip);
 static void tmd2725_als_parameter_init(struct tmd2725_chip *chip);
 #define DEV_ALS_NAME         "light"
-#define ALS_CAL_PATH		 "/persist/sensors/als_cal_data"
+#define ALS_CAL_PATH		 "/mnt/vendor/persist/sensors/als_cal_data"
 #define PARSE_DTSI_NUMBER    7
 #define MODULE_MANUFACTURE_NUMBER 3
 //#define LUX_DBG
